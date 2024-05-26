@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HomePage{% endblock %}
+
+ {% block stylesheets %}
+     <style>
+         .led-on {
+             background-color: green;
+             color: white;
+         }
+
+         .led-off {
+             background-color: red;
+             color: white;
+         }
+     </style>
+ {% endblock %}
+
+{% block body %}
+<section class="dashboard" style="margin-left: 50px;">
+    <div class="header">
+        <div class="element" style="padding-top: 25px;">
+            <h3>Vérification des commandes :</h3>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="element" style="padding-top: 25px;">
+            {{ render(controller(
+                'App\\Controller\\LEDController::interrupteur'
+            )) }}
+        </div>
+
+        <div class="element" style="padding-top: 25px;">
+            <h3>Choisir la couleur des LED</h3>
+            <form action="{{ path('color') }}" method="post">
+                <input type="color" id="color" name="color" value="#ff0000">
+                <button type="submit">Valider</button>
+            </form>
+        </div>
+
+        <div class="element" style="padding-top: 25px;">
+            <h3>Choisir un mot et sa couleur</h3>
+            <form method="post" action="{{ path('display_word_and_color') }}">
+                <div class="form-group">
+                    <label for="word">Mot à afficher :</label>
+                    <input type="text" id="word" name="word" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="color">Choisir la couleur :</label>
+                    <input type="color" id="color" name="color" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Afficher</button>
+            </form>
+        </div>
+
+        <div class="element" style="padding-top: 25px;">
+            <h3>Choisir un mode :</h3>
+            <form action="{{ path('mode') }}" method="post">
+                <div>
+                    <input type="radio" id="option1" name="option" value="1">
+                    <label for="option1">Drapeau de la France</label>
+                </div>
+                <div>
+                    <input type="radio" id="option2" name="option" value="2">
+                    <label for="option2">Mode Police</label>
+                </div>
+                <div>
+                    <button type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

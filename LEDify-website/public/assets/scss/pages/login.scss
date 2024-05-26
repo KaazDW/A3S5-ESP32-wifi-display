@@ -1,0 +1,72 @@
+// LOGIN Sass File :
+
+body{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-content {
+    margin: auto;
+    text-align: center;
+
+    form{
+      align-items: center;
+
+      .uptitle {
+        font-size: 65px;
+      }
+      .login-form{
+        padding: 30px;
+        border-radius: 15px;
+
+        .inputs{
+          font-size: 14px;
+          div{
+            user-select: none;
+            background-color: white;
+            padding: 5px 15px;
+            margin-bottom: 7px;
+            border-radius: 50px;
+            text-align: left;
+            i{
+              color: #3d3d3d;
+            }
+            input{
+              padding: 8px 13px;
+              border: none;
+            }
+            input:focus-visible{
+              border:none;
+            }
+            input:focus{
+              outline: none;
+            }
+          }
+          div:last-child{
+            font-size: 13px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            input{
+              margin: 0 15px;
+            }
+          }
+        }
+        .btn{
+          margin-top: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+
+          *{
+            font-size: 23px;
+          }
+        }
+      }
+    }
+  }
+}

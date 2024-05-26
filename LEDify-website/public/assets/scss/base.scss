@@ -1,0 +1,176 @@
+// BASE SASS FILE - init global sass content
+
+// Google Fonts Import : Poppins + League Spartan
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Default initialization
+*{
+  margin: 0;
+  padding: 0;
+  //color: var(--color-black);
+  ul{list-style: none;}
+  a{text-decoration: none; color: black;}
+  button:hover{cursor: pointer;}
+  button{background-color: transparent; border: none;}
+
+  // border: 1px solid red;
+}
+
+// Variables definitions
+:root{
+  --color-black: #222;
+  --color-white: white;
+  --color-darkgrey: #323232;
+
+  --color-primary: #F1EFE7;
+  --color-red: #be3e2b;
+  --color-blue: #576CA8;
+
+  --font-title: 'League Spartan', sans-serif;
+  --font-content: 'Poppins', sans-serif;
+}
+
+// Selection custom color
+::selection {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+// for body opacity animation on load
+body.loaded {
+  opacity: 1;
+}
+
+// Main style definition, header and body disposition
+body {
+  background-color: var(--color-primary);
+  font-family: var(--font-content);
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  // for body opacity animation on load
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 25px 15px 25px;
+
+    .user {
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 50px;
+
+      }
+      span {
+        margin-left: 15px;
+        font-size: 21px;
+      }
+    }
+    .uptitle{
+      font-size: 35px;
+      letter-spacing: -2px;
+
+      // Use if we want to align center ratWallet dashboard header top title
+      // width: 100%;
+      // text-align: center;
+    }
+  }
+  main{
+    display: flex;
+    height: 100%;
+    aside{
+      width: 100%;
+      min-width: 230px;
+      max-width: 260px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin-left: 20px;
+      margin-bottom: 13px;
+    }
+    section.dashboard{
+      width: 100%;
+
+    }
+  }
+}
+
+// Individual elements style definition
+.uptitle{
+  font-family: var(--font-title);
+  font-weight: 800;
+  letter-spacing: -5px;
+  font-size: 90px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.24));
+  color: var(--color-black);
+
+}
+
+.subtitle {
+  font-family: var(--font-title);
+  font-size: 22px;
+  margin-top: -14px;
+  text-align: left;
+  color: var(--color-black);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.24));
+}
+
+.icon{
+  border-radius: 12px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.24));
+  user-select: none;
+}
+
+.button {
+  pointer-events: auto;
+  cursor: pointer;
+  background: var(--color-black);
+  border: none;
+  position: relative;
+  display: inline-block;
+}
+
+.button::before,
+.button::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.button--pan {
+  border: 2px solid #000;
+  border-radius: 3rem;
+  overflow: hidden;
+  color: white;
+}
+
+.button--pan span {
+  position: relative;
+  mix-blend-mode: difference;
+}
+
+.button--pan::before {
+  content: '';
+  background: var(--color-primary);
+  transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.button--pan:hover::before {
+  transform: translate3d(0,-100%,0);
+}
+
+.element{
+  background-color: white;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.041);
+}

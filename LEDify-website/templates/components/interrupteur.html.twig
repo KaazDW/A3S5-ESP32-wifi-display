@@ -1,0 +1,18 @@
+<h3>Bouton ON/OFF</h3>
+{% if ledState %}
+    {% if not ledState.isEtat() %}
+        <form action="{{ path('control_led') }}" method="post">
+            <button type="submit" name="action" value="on" class="led-on">
+                <img src="{{ asset('assets/images/on.png') }}"  alt="ON" style="width: 200px; height: 100px">
+            </button>
+        </form>
+    {% else %}
+        <form action="{{ path('control_led') }}" method="post">
+            <button type="submit" name="action" value="off" class="led-off">
+                <img src="{{ asset('assets/images/off.png') }}"  alt="OFF" style="width: 200px; height: 100px">
+            </button>
+        </form>
+    {% endif %}
+{% else %}
+    <p>Impossible de récupérer l'état de la LED</p>
+{% endif %}

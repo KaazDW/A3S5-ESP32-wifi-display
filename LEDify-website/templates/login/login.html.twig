@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="login-content">
+        <form action="{{ path('app_login') }}" method="post">
+            <h3 class="uptitle">{{ 'Login.'|trans }}</h3>
+            <div class="login-form">
+                <div class="inputs">
+                    <div class="">
+                        <i class="bi bi-envelope-open-fill"></i>
+                        <input type="text" class="form-control" placeholder="Mail" id="username" name="_username" value="{{ last_username }}">
+                    </div>
+                    <div class="">
+                        <i class="bi bi-key-fill"></i>
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="_password">
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="btn">
+                    <a href="{{ path('accueil') }}">
+                        <i class="bi bi-arrow-left-square-fill"></i>
+                    </a>
+                    <button type="submit">
+                        <i class="bi bi-door-open-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/accueil.css') }}">
+{% endblock %}
+
+ {% block body %}
+     <!-- https://codepen.io/TurkAysenur/pen/ZEpxeYm -->
+     <!-- Maybe think about use a svg animated background like this on the dashboard ?? -->
+
+     <div class="home-content">
+     <div class="title">
+         <img src="{{ asset('assets/images/logo/logo.png') }}" class="nav-logo" alt="Logo du site">
+         <div class="text">
+             <h1 class="uptitle">LEDify.</h1>
+
+             <div class="subtitle-slider">
+                 <div class="subtitle-slider__container">
+                     <ul class="subtitle-slider__container__list">
+                         <li class="subtitle-slider__container__list__item subtitle">{{ 'Empower Your Messages'|trans }}</li>
+                         <li class="subtitle-slider__container__list__item subtitle">{{ 'Illuminate Your Creativity'|trans }}</li>
+                         <li class="subtitle-slider__container__list__item subtitle">{{ 'Light Up Your World'|trans }}</li>
+                         <li class="subtitle-slider__container__list__item subtitle">{{ 'Inspire, Create, Display'|trans }}</li>
+                     </ul>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="nav">
+         <!-- Add hover effect -->
+         <!-- Effect examples : https://codepen.io/aaroniker/pen/OJPqPMR ; https://codepen.io/aaroniker/pen/XWYpyNM -->
+         <a href="{{ path('app_login') }}" class="button button--pan"><span>{{ 'Sign in'|trans }}</span></a>
+         <a href="{{ path('app_register') }}" class="button button--pan"><span>{{ 'Create an account'|trans }}</span></a>
+         <a href="https://github.com/KaazDW/A3S5-ratWallet" class="button button--pan" target="_blank"><span>Github</span></a>
+     </div>
+ {% endblock %}

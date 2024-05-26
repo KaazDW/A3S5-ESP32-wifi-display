@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="login-content">
+        {{ form_start(registrationForm) }}
+        <h3 class="uptitle">{{ 'Register.'|trans }}</h3>
+        <div class="login-form">
+            <div class="inputs">
+
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.username) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_row(registrationForm._token) }}
+
+            </div>
+            <div class="btn">
+                <a href="{{ path('accueil') }}">
+                    <i class="bi bi-arrow-left-square-fill"></i>
+                </a>
+                <button type="submit">
+                    <i class="bi bi-person-plus-fill"></i>
+                </button>
+            </div>
+        </div>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

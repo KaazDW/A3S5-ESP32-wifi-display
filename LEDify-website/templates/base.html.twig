@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LEDify.{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/base.css') }}">
+
+    <!-- Tooltiper.js init -->
+    <!-- https://github.com/KaazDW/Tooltiper -->
+    <link rel="stylesheet" href="{{ asset('tooltiper/tooltiper.css') }}" />
+    <script src="{{ asset('tooltiper/tooltiper.js') }}"></script>
+
+
+    {% block stylesheets %}{% endblock %}
+    {{ encore_entry_link_tags('app') }}
+    {% block javascripts %}{% endblock %}
+    {{ encore_entry_script_tags('app') }}
+</head>
+
+<body>
+{% if app.user %}
+    <header>
+        <div class="user">
+            <img src="{{ asset('assets/images/logo/logo.png') }}" class="icon" alt="Logo du site">
+            <span>{{ app.user.username }}.</span>
+        </div>
+        <h1 class="uptitle" style="margin-right: 30px;">LEDify.</h1>
+    </header>
+{% endif %}
+
+<main>
+    {% if app.user %}
+        <aside>
+            <div class="main">
+                <h3>Historique</h3>
+                <!-- ACCOUNT DIV -->
+                {{ render(controller(
+                    'App\\Controller\\HomeController::historiqueText'
+                )) }}
+            </div>
+
+            <div class="bottom element">
+                <ul class="bot">
+                    <li><a class="case btn" href="{{ path('app_logout') }}"><i style="margin-right: 10px;" class="bi bi-door-open-fill"></i>{{ 'Log out'|trans }}</a></li>
+                </ul>
+            </div>
+        </aside>
+    {% endif %}
+
+    {% block body %}
+    {% endblock %}
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('loaded'); // for opacity body animation on load
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% if userWords is not empty %}
+    <ul>
+        <div class="element">
+        {% for word in userWords %}
+            <li>{{ word.text }} , {{ word.color }} , {{ word.date|date('d/m/Y H:i:s') }}</li>
+        {% endfor %}
+        </div>
+    </ul>
+{% else %}
+    <p>Aucun mot pour le moment</p>
+{% endif %}
